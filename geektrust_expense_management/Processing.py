@@ -161,8 +161,14 @@ class Process:
         split_input_line = input_line.split(" ")
         # second index is giver
         giving_member = split_input_line[1]
+        if(giving_member not in self.Dict_GivingMember_RecevingMember):
+            self.final_output.append("MEMBER_NOT_FOUND")
+            return False
         # third index is receiver
         receiving_member = split_input_line[2]
+        if (receiving_member not in self.Dict_GivingMember_RecevingMember):
+            self.final_output.append("MEMBER_NOT_FOUND")
+            return False
         # fourth index is amount
         amount = int(split_input_line[3].split("\n")[0])
 
