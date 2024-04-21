@@ -21,13 +21,14 @@ def EvaluateFinalRemainingAmounts():
     #it will be good to evaluate all the dues at time of each spend for all the active members
     for member in final_dict:
         for due_member in final_dict[member]:
-            # net_profit_member += final_dict[member][due_member]
+            #if A->B is greater than or equals to B->A
             if(final_dict[member][due_member] >= final_dict[due_member][member]):
                 final_dict[member][due_member] -= final_dict[due_member][member]
                 final_dict[due_member][member] = 0
+            #if A->B is less than to B->A
             else:
                 final_dict[due_member][member] -= final_dict[member][due_member]
-                final_dict[due_member][member] -= final_dict[member][due_member]
+                final_dict[member][due_member] = 0
 
             #again re-check if price is not pending anymore
             #if still price is there to submit for due member to member
